@@ -1,4 +1,7 @@
 # Ex-2-GENERATION OF LEXICAL TOKENS LEX FLEX TOOL
+###NAME : PARTHASARATHI S
+###REG : 212223040144
+
 # AIM
 ## To write a lex program to implement lexical analyzer to recognize a few patterns.
 # ALGORITHM
@@ -32,6 +35,41 @@
 7.	Compile that file with C compiler and verify the output.
 
 # INPUT
+```
+%{
+#include <stdio.h>
+#include <ctype.h>
+%}
+
+%%
+
+"if"        { printf("Keyword: %s\n", yytext); }
+"else"      { printf("Keyword: %s\n", yytext); }
+"while"     { printf("Keyword: %s\n", yytext); }
+"for"       { printf("Keyword: %s\n", yytext); }
+
+[0-9]+      { printf("Number: %s\n", yytext); }
+[a-zA-Z_][a-zA-Z0-9_]*   { printf("Identifier: %s\n", yytext); }
+
+"=="|"="    { printf("Operator: %s\n", yytext); }
+"+"|"-"|"*"|"/" { printf("Operator: %s\n", yytext); }
+
+[ \t\n]     ;   // Ignore whitespace
+.           { printf("Unknown: %s\n", yytext); }
+
+%%
+
+int main(int argc, char **argv) {
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
+```
 # OUTPUT
+<img width="1476" height="755" alt="491525958-731da325-a0b6-4c0b-87c5-745b3e131d1c" src="https://github.com/user-attachments/assets/be14f0b9-37c2-48af-9426-4a664ead9ac5" />
+
 # RESULT
 ## The lexical analyzer is implemented using lex and the output is verified.
